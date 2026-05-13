@@ -16,14 +16,16 @@ public class Practice {
         node2.next = node3;
         node4.next = node1;
 
-        ListNode extra = node4;
+        //ListNode extra = node4;
         node4.data = 'e';
 
         //System.out.println(extra.data);
 
         //System.out.println(node1.next.next.data);
         printList(node4);
-        System.out.println(countX(node4));
+        System.out.println(/*countX(node4) +*/ "\n");
+        
+        printList(removeAt(node4, 0));
     }
 
     public static void printList(ListNode head)
@@ -46,5 +48,32 @@ public class Practice {
             t2 = t2.next;
         }
         return count;
+    }
+    
+    /**
+     * Remove the node at remove index, and return the head of the list
+     * Ex.
+     * e -> t -> k -> y
+     * 
+     * removeIndex(node1, 2)
+     * 
+     * e -> t -> y
+     */
+    public static ListNode removeAt(ListNode head, int removeIndex)
+    {
+        ListNode current = head;
+        
+        if(removeIndex == 0)
+        {
+            return head.next;
+        }
+        else{
+            for(int i = 0; i < removeIndex-1; i++)
+            {
+                current = current.next;
+            }
+            current.next = current.next.next;
+        }
+        return head;
     }
 }
